@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17324d">
+    <title>KubeLab Tasks</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div class="eyebrow">KubeLab</div>
+        <h1>Tasks</h1>
+        <p>A small task list for exploring how requests travel through Kubernetes.</p>
+      </header>
+
+      <section class="panel" aria-labelledby="tasks-heading">
+        <div class="section-heading">
+          <h2 id="tasks-heading">Task list</h2>
+          <button id="reload-tasks" class="secondary" type="button">Refresh</button>
+        </div>
+
+        <form id="task-form">
+          <label for="task-title">New task</label>
+          <div class="form-row">
+            <input id="task-title" name="title" type="text" autocomplete="off" aria-describedby="title-help">
+            <button id="add-task" type="submit">Add task</button>
+          </div>
+          <p id="title-help" class="hint">1–120 characters after trimming spaces.</p>
+        </form>
+
+        <p id="task-feedback" class="feedback" role="status" aria-live="polite"></p>
+        <p id="task-state" class="state" role="status" aria-live="polite">Loading tasks…</p>
+        <ul id="task-list" class="task-list" aria-label="Tasks" hidden></ul>
+      </section>
+
+      <section class="panel identity-panel" aria-labelledby="identity-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="identity-heading">API identity</h2>
+            <p class="hint">Identity from the latest <code>/api/whoami</code> request. Refresh to observe another API Pod.</p>
+          </div>
+          <button id="reload-identity" class="secondary" type="button">Check identity</button>
+        </div>
+        <p id="identity-state" class="state" role="status" aria-live="polite">Loading API identity…</p>
+        <dl id="identity-details" class="identity-details" hidden>
+          <div><dt>Pod</dt><dd id="pod-name"></dd></div>
+          <div><dt>Namespace</dt><dd id="pod-namespace"></dd></div>
+          <div><dt>Node</dt><dd id="node-name"></dd></div>
+          <div><dt>Pod IP</dt><dd id="pod-ip"></dd></div>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
