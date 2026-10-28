@@ -1,0 +1,21 @@
+# Some control-plane components are embedded differently in K3s.
+# Disable their default scrape targets for this lab.
+kubeEtcd:
+  enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    retention: 2d
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+grafana:
+  enabled: true
